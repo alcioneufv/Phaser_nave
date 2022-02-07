@@ -28,14 +28,13 @@
 
             function initScene() { }
             function preloadScene() {
-                 this.load.image("fundo", "clouds-white.png");
+                 this.load.image("fundo", "fundo.png");
             }
             function createScene() {
-                 cloudsWhite = this.add.tileSprite(640, 200, 1280, 400, "fundo");
+                 espaco = this.add.tileSprite(0, 0, 200, 320, "fundo").setOrigin(0, 0);
             }
             function updateScene() {
-                cloudsWhite.tilePositionX += 0.5;
-                cloudsWhiteSmall.tilePositionX += 0.25;
+                espaco.tilePositionY += 0.5;
             }
 
         </script>
