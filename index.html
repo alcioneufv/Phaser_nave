@@ -6,8 +6,6 @@
     <body>
         <div id="game"></div>
         <script>
-            // Based on Nic Raboy
-            
             const phaserConfig = {
                 type: Phaser.AUTO,
                 parent: "game",
@@ -34,7 +32,7 @@
                  espaco = this.add.tileSprite(0, 0, 200, 320, "fundo").setOrigin(0, 0);
             }
             function updateScene() {
-                espaco.tilePositionY += 0.5;
+                espaco.tilePositionY -= 0.5;
             }
 
         </script>
