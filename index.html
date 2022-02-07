@@ -11,12 +11,14 @@
                 parent: "game",
                 width: 200,
                 height: 300,
-                backgroundColor: "#5DACD8",
+                physics: {
+                   default: 'arcade',
+                   debug: false }
+                },
                 scene: {
-                    init: initScene,
-                    preload: preloadScene,
-                    create: createScene,
-                    update: updateScene
+                    preload: preload,
+                    create: create,
+                    update: update
                 }
             };
 
@@ -24,14 +26,15 @@
 
             var cloudsWhite, cloudsWhiteSmall;
 
-            function initScene() { }
-            function preloadScene() {
+            function preload() {
                  this.load.image("fundo", "fundo.png");
+                 this.load.spritesheet('nave', 'player.png', { frameWidth: 24, frameHeight: 24 });
             }
-            function createScene() {
-                 espaco = this.add.tileSprite(0, 0, 200, 320, "fundo").setOrigin(0, 0);
+            function create() {
+                 espaco = this.add.tileSprite(0, 0, 200, 300, "fundo").setOrigin(0, 0);
+                 nave = this.physics.add.sprite(93, 30, 'nave').setOrigin(0, 0);
             }
-            function updateScene() {
+            function update() {
                 espaco.tilePositionY -= 0.5;
             }
 
