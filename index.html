@@ -45,7 +45,7 @@
                 nave.anims.play('centro', true);
                 
                 asteroide = this.physics.add.sprite(80, 80, 'asteroide').setOrigin(0, 0);
-                this.anims.create({ key: 'rola', frames: this.anims.generateFrameNumbers('asteroide', { start: 0, end: 19 }), frameRate: 2, repeat: -1 });
+                this.anims.create({ key: 'rola', frames: this.anims.generateFrameNumbers('asteroide', { start: 0, end: 19 }), frameRate: 30, repeat: -1 });
                 asteroide.anims.play('rola', true);
 
             }
