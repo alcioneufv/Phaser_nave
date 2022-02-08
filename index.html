@@ -44,13 +44,14 @@
                 this.anims.create({ key: 'dir', frames: this.anims.generateFrameNumbers('nave', { start: 2, end: 2 }), frameRate: 2, repeat: 0 });
                 nave.anims.play('centro', true);
                 
-                asteroide = this.physics.add.sprite(80, 80, 'asteroide').setOrigin(0, 0);
+                asteroide = this.physics.add.sprite(80, 0, 'asteroide').setOrigin(0, 0);
                 this.anims.create({ key: 'rola', frames: this.anims.generateFrameNumbers('asteroide', { start: 0, end: 19 }), frameRate: 30, repeat: -1 });
                 asteroide.anims.play('rola', true);
 
             }
             function update() {
                 espaco.tilePositionY -= 0.5;
+                asteroide.y += 1;
                 if (cursors.left.isDown) {
                    nave.setVelocityX(-100);
                    nave.anims.play('esq', true);
@@ -63,7 +64,6 @@
                    nave.setVelocityX(0);
                    nave.anims.play('centro', true);
                 }
-
             }
 
         </script>
