@@ -51,7 +51,7 @@
             }
             function update() {
                 espaco.tilePositionY -= 0.5;
-                asteroide.y = (asteroide.x+1) % phaserConfig.height;
+                asteroide.y = (asteroide.y+1) % phaserConfig.height;
                 if (cursors.left.isDown) {
                    nave.setVelocityX(-100);
                    nave.anims.play('esq', true);
