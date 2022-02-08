@@ -30,6 +30,7 @@
             function preload() {
                  this.load.image("fundo", "fundo.png");
                  this.load.spritesheet('nave', 'player.png', { frameWidth: 24, frameHeight: 24 });
+                 this.load.spritesheet('asteroide', 'asteroid.png', { frameWidth: 64, frameHeight: 64 });
             }
             function create() {
                 cursors = this.input.keyboard.createCursorKeys();
@@ -42,6 +43,11 @@
                 this.anims.create({ key: 'esq', frames: this.anims.generateFrameNumbers('nave', { start: 0, end: 0 }), frameRate: 2, repeat: 0 });
                 this.anims.create({ key: 'dir', frames: this.anims.generateFrameNumbers('nave', { start: 2, end: 2 }), frameRate: 2, repeat: 0 });
                 nave.anims.play('centro', true);
+                
+                asteroide = this.physics.add.sprite(80, 80, 'asteroide').setOrigin(0, 0);
+                this.anims.create({ key: 'rola', frames: this.anims.generateFrameNumbers('asteroide', { start: 0, end: 19 }), frameRate: 2, repeat: -1 });
+                asteroide.anims.play('rola', true);
+
             }
             function update() {
                 espaco.tilePositionY -= 0.5;
