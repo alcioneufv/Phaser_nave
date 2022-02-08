@@ -21,21 +21,43 @@
                     update: update
                 }
             };
-
+            
             const game = new Phaser.Game(phaserConfig);
-
-            var cloudsWhite, cloudsWhiteSmall;
+            var cursors;
+            var nave;
+            var asteroide;
 
             function preload() {
                  this.load.image("fundo", "fundo.png");
                  this.load.spritesheet('nave', 'player.png', { frameWidth: 24, frameHeight: 24 });
             }
             function create() {
-                 espaco = this.add.tileSprite(0, 0, 200, 300, "fundo").setOrigin(0, 0);
-                 nave = this.physics.add.sprite(88, 270, 'nave').setOrigin(0, 0);
+                cursors = this.input.keyboard.createCursorKeys();
+                
+                espaco = this.add.tileSprite(0, 0, 200, 300, "fundo").setOrigin(0, 0);
+                
+                nave = this.physics.add.sprite(88, 270, 'nave').setOrigin(0, 0);
+                nave.setCollideWorldBounds(true);
+                this.anims.create({ key: 'centro', frames: this.anims.generateFrameNumbers('nave', { start: 1, end: 1 }), frameRate: 2, repeat: 0 });
+                this.anims.create({ key: 'esq', frames: this.anims.generateFrameNumbers('nave', { start: 0, end: 0 }), frameRate: 2, repeat: 0 });
+                this.anims.create({ key: 'dir', frames: this.anims.generateFrameNumbers('nave', { start: 2, end: 2 }), frameRate: 2, repeat: 0 });
+                nave.anims.play('centro', true);
             }
             function update() {
                 espaco.tilePositionY -= 0.5;
+                if (cursors.left.isDown) {
+                   nave.setVelocityX(-100);
+                   nave.anims.play('esq', true);
+                }
+                else if (cursors.right.isDown) {
+                   nave.setVelocityX(100);
+                   nave.anims.play('dir', true);
+                }
+                else if (cursors.up.isDown)    {
+                   nave.setVelocityX(0);
+                   lutB.anims.play('centro', true);
+                }
+
             }
 
         </script>
