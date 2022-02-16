@@ -31,9 +31,29 @@
                  this.load.image("fundo", "fundo.png");
                  this.load.spritesheet('nave', 'player.png', { frameWidth: 24, frameHeight: 24 });
                  this.load.spritesheet('asteroide', 'asteroid.png', { frameWidth: 64, frameHeight: 64 });
+                 this.load.image('fire', 'muzzleflash7.png');
             }
             function create() {
                 cursors = this.input.keyboard.createCursorKeys();
+                
+                fpsText = this.add.text(10, 10, 'FPS: -- \n-- Particles', {font: 'bold 26px Arial', fill: '#ffffff'});
+                particles = this.add.particles('fire');
+
+                particles.createEmitter({
+                    alpha: { start: 1, end: 0 },
+                    scale: { start: 0.5, end: 2.5 },
+                    //tint: { start: 0xff945e, end: 0xff945e },
+                    speed: 20,
+                    accelerationY: -300,
+                    angle: { min: -85, max: -95 },
+                    rotate: { min: -180, max: 180 },
+                    lifespan: { min: 1000, max: 1100 },
+                    blendMode: 'ADD',
+                    frequency: 110,
+                    maxParticles: 10,
+                    x: 88,
+                    y: 270
+                });
                 
                 espaco = this.add.tileSprite(0, 0, 200, 300, "fundo").setOrigin(0, 0);
                 
@@ -53,6 +73,7 @@
                 var collider = this.physics.add.collider(nave, asteroide, function (nave, asteroide) {
                   asteroide.destroy();
                   asteroide = null;  
+                  fpsText.setText('FPS: ' + (1000/delta).toFixed(3) + '\n' + particles.emitters.first.alive.length + ' Particles');
                 }, null, this);
                 
             }
