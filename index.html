@@ -7,7 +7,7 @@
         <div id="game"></div>
         <script>
             const phaserConfig = {
-                type: Phaser.WEBGL,
+                type: Phaser.AUTO,
                 parent: "game",
                 width: 200,
                 height: 300,
@@ -31,7 +31,6 @@
                  this.load.image("fundo", "fundo.png");
                  this.load.spritesheet('nave', 'player.png', { frameWidth: 24, frameHeight: 24 });
                  this.load.spritesheet('asteroide', 'asteroid.png', { frameWidth: 64, frameHeight: 64 });
-                this.load.atlas('flares', 'flares.png', 'flares.json');
             }
             
             function create() {
@@ -58,8 +57,6 @@
                 }, null, this);
                 
             }
-            
-            
             
             function update() {
                 espaco.tilePositionY -= 0.5;
